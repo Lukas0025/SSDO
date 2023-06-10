@@ -19,8 +19,6 @@ uint8_t SSDO::setPacket(uint8_t* data, uint32_t packetId, uint8_t* packet, uint3
 	newHeader.pktSize = (dataPos + SSDO_PACKET_DATA_SIZE) <= dataSize ? 
 								SSDO_PACKET_DATA_SIZE : (dataSize - dataPos); 
 
-	DEBUG_PRINT(newHeader.pktSize);
-
 	//Object information
 	newHeader.objId   = this->objectId;
 	newHeader.objSize = dataSize;
@@ -50,30 +48,6 @@ bool SSDO::decodePacket(uint8_t* data, uint8_t* packet, ssdoHeader_t* header) {
 	memcpy(data,   packet + sizeof(ssdoHeader_t), headerPtr->pktSize);
 
 	return true;
-}
-
-ssdoChange_t SSDO::changeEncode(LoraSettings_t newSettings) {
-    ssdoChange_t newSSDOSettings;
-
-	newSSDOSettings.Frequency    = newSettings.Frequency;
-	newSSDOSettings.Bandwidth    = newSettings.Bandwidth;
-	newSSDOSettings.SpreadFactor = newSettings.SpreadFactor;
-	newSSDOSettings.CodeRate     = newSettings.CodeRate;
-	newSSDOSettings.SyncWord     = newSettings.SyncWord;
-
-	return newSSDOSettings;
-}
-
-LoraSettings_t SSDO::changeDecode(ssdoChange_t newSettings, LoraSettings_t defaults) {
-    LoraSettings_t newLORASettings = defaults;
-
-	newLORASettings.Frequency    = newSettings.Frequency;
-	newLORASettings.Bandwidth    = newSettings.Bandwidth;
-	newLORASettings.SpreadFactor = newSettings.SpreadFactor;
-	newLORASettings.CodeRate     = newSettings.CodeRate;
-	newLORASettings.SyncWord     = newSettings.SyncWord;
-
-	return newLORASettings;
 }
 
 uint16_t SSDO::calcCRC(uint8_t* data, uint32_t len) {

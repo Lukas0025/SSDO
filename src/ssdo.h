@@ -72,8 +72,6 @@ class SSDO {
 		 */
 		bool decodePacket(uint8_t* data, uint8_t* packet, ssdoHeader_t* header);
 
-        ssdoChange_t SSDO::changeEncode(LoraSettings_t newSettings);
-        LoraSettings_t SSDO::changeDecode(ssdoChange_t newSettings, LoraSettings_t defaults);
 	private:
 		/**
 		 * Calculate CRC check sum for data
