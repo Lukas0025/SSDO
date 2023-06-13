@@ -65,12 +65,12 @@ class SSDO {
 
 		/**
 		 * Decode SSDO packet 
-		 * @param data    pointer to save decoded data from packet
 		 * @param packet  pointer to packet to decode
+		 * @param data    pointer to save decoded data from packet
 		 * @param header  pointer to save decoded header
 		 * @return bool true if success decode
 		 */
-		bool decodePacket(uint8_t* data, uint8_t* packet, ssdoHeader_t* header);
+		static bool decodePacket(uint8_t* packet, uint8_t* data, ssdoHeader_t* header);
 
 	private:
 		/**

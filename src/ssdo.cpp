@@ -36,7 +36,7 @@ uint8_t SSDO::setPacket(uint8_t* data, uint32_t packetId, uint8_t* packet, uint3
 	return newHeader.pktSize + sizeof(ssdoHeader_t);
 }
 
-bool SSDO::decodePacket(uint8_t* data, uint8_t* packet, ssdoHeader_t* header) {
+bool SSDO::decodePacket(uint8_t* packet, uint8_t* data, ssdoHeader_t* header) {
 	ssdoHeader_t* headerPtr = (ssdoHeader_t*) packet;
 
 	if (memcmp(headerPtr->protName, "SSDO", 4) != 0) return false;
